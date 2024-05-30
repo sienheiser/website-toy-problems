@@ -1,0 +1,8 @@
+                {% for record in data %}
+                        <th>{{ record.col1 }}</th>
+                        <th>{{ record.col2 }}</th>
+                        <th><button hx-get="/edit/{{ id }}" 
+                            hx-trigger = "click" 
+                            hx-target = "#t{{ id }}" 
+                            hx-swap = "innerHTML">Edit</button></th>
+                {% endfor %}

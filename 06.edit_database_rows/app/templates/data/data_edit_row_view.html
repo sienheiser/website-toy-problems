@@ -1,0 +1,13 @@
+                {% for record in data %}
+                        <th><input name = 'col1' value = "{{ record.col1 }}"></th>
+                        <th><input name = 'col2' value = "{{ record.col2 }}"></th>
+                        <th><buttion hx-post = "/cancel/{{ id }}" 
+                            hx-trigger = "click" 
+                            hx-target = "#t{{ id  }}"
+                            hx-swap = "innerHTML"
+                            hx-include="closest tr">submit</buttion></th>
+                        <th><button hx-get="/cancel/{{ id }}" 
+                            hx-trigger = "click" 
+                            hx-target = "#t{{ id }}" 
+                            hx-swap = "innerHTML">cancel</button></th>
+                {% endfor %}

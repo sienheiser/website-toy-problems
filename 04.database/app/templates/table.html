@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <table>
+        <thead>
+            <tr>
+                <th>one</th>
+                <th>two</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in data %}
+                <tr>
+                    <th>{{ r.one }}</th>
+                    <th>{{ r.two }}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</html>

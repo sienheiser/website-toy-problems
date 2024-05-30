@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<html>
+    <body id = 'bdytest'>
+        <table id = 'table132'>
+            <thead>
+                <tr>
+                    <th>one</th>
+                    <th>two</th>
+                </tr>
+            </thead>
+            <tbody id = 'tablebody'>
+                {% for r in data %}
+                <tr>
+                    <th>{{ r.one }}</th>
+                    <th>{{ r.two }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form hx-post="/"  hx-trigger="submit" hx-target="#tablebody" hx-swap = "innerHTML">
+            <p><input type = "text" name = "one" /></p>
+            <p><input type = "submit" value = "submit"/></p>
+        </form>
+    </body>
+</html>
