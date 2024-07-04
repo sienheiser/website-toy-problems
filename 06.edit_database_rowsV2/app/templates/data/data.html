@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<html>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>col1</th>
+                    <th>col2</th>
+                </tr>
+            </thead>
+            <tbody id = tablebody>
+                {% for record in data %}
+                    <tr id = t{{ record.rowid  }}>
+                        <th>{{ record.col1 }}</th>
+                        <th>{{ record.col2 }}</th>
+                        <th><button hx-get="/{{ record.rowid }}/edit" 
+                            hx-trigger = "click" 
+                            hx-target = "#t{{ record.rowid }}" 
+                            hx-swap = "innerHTML">Edit</button></th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
