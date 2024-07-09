@@ -4,7 +4,7 @@ import flask_login
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-users = {'foo@bar.tld':{'password':'secret'}}
+users = {'mps':{'password':'mps'}}
 
 class User(flask_login.UserMixin):
     pass

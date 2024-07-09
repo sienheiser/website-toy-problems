@@ -5,7 +5,9 @@ from sqlalchemy import select
 from flask import render_template,request,redirect,url_for
 from flask_login import login_user, login_required,logout_user,current_user
 
-
+@app.route("/")
+def index():
+    return render_template("main.html")
 @app.route("/hello")
 def hello():
     return "Hello World!"
@@ -20,20 +22,14 @@ def data():
 @app.route("/login",methods = ['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return '''
-               <form action='login' method='POST'>
-                <input type='text' name='email' id='email' placeholder='email'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
-               </form>
-               '''
+        return render_template("login.html")
     else:
         email = request.form['email']
         if email in users and request.form['password'] == users[email]['password']:
             user = User()
             user.id = email
             login_user(user)
-            return redirect(url_for('protected'))
+            return render_template("submit.html",user=user.id)
         else:
             return 'Bad logic'
 
@@ -45,4 +41,4 @@ def protected():
 @app.route('/logout')
 def logout():
     logout_user()
-    return 'Logged out'
+    return render_template("main.html")
